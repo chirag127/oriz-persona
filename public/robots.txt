@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://persona.oriz.in/sitemap-index.xml

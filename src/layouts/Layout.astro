@@ -11,9 +11,21 @@ interface Props {
   description?: string;
 }
 const {
-  title = 'oriz.persona — AI character chat',
-  description = 'Create AI characters with a name, traits & voice, roleplay in speech-bubble chat, save them in your browser, and share via a link. 100% client-side.',
+  title = 'oriz.persona — AI character chat & roleplay, free, no signup',
+  description = 'Free AI character chat: build a persona with name, traits & voice, roleplay in speech-bubble chat, save & share by link. 100% in your browser, no signup, no upload.',
 } = Astro.props;
+const canonical = 'https://persona.oriz.in/';
+const ogImage = 'https://persona.oriz.in/icons/icon-512.png';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'oriz.persona',
+  description,
+  applicationCategory: 'EntertainmentApplication',
+  operatingSystem: 'Web',
+  url: canonical,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
 ---
 
 <!doctype html>
@@ -23,15 +35,22 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ff2d93" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <link rel="canonical" href="https://persona.oriz.in/" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <script is:inline src="/registerSW.js"></script>
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
   </head>
   <body>
     <a class="oz-skip-link" href="#main">Skip to content</a>
