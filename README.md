@@ -1,10 +1,12 @@
-# oriz-persona
+# oriz Persona
 
-**Live:** https://persona.oriz.in
+**Live app:** https://persona.oriz.in
+**About / info:** https://chirag127.github.io/oriz-persona/
+**llms.txt:** https://persona.oriz.in/llms.txt
 
 AI character chat. Build a persona — name, traits, voice, opening line, scene — then roleplay with it in a bouncy speech-bubble chat. Save your cast in the browser, or share any character with a single link.
 
-**100% client-side. No upload, no signup, no server.** Your characters and conversations never leave your device. Share links carry the character itself (compressed into the URL), so nothing is stored anywhere.
+**100% client-side. No upload, no signup, no server. Free.** Your characters and conversations never leave your device. Share links carry the character itself (compressed into the URL), so nothing is stored anywhere.
 
 ## Features
 
@@ -15,9 +17,9 @@ AI character chat. Build a persona — name, traits, voice, opening line, scene 
 - **Share by URL** — the persona is packed into the link with `lz-string`; open it anywhere to chat.
 - **Graceful AI degradation** — if every provider is down, your characters and saved chats stay intact.
 
-## Stack
+## Tech
 
-Astro (static) · React 19 islands · Tailwind v4 · `@chirag127/oz-*` shared packages · `lz-string` · `idb-keyval`. Big AI lib is dynamically imported only when you send the first message, so first paint is instant.
+Astro (static) · React 19 islands · Tailwind v4 · `@chirag127/oz-*` shared packages · `lz-string` · `idb-keyval`. PWA-installable. The AI lib is dynamically imported only when you send the first message, so first paint is instant.
 
 ## Develop
 

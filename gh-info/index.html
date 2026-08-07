@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About oriz Persona — AI character chat</title>
+  <meta name="description" content="About oriz Persona: build AI characters, roleplay, save locally, and share by URL. 100% client-side, no signup, no upload. Project info page; live app at persona.oriz.in." />
+  <link rel="canonical" href="https://chirag127.github.io/oriz-persona/" />
+  <style>
+    :root { color-scheme: light dark; --bg:#faf7ff; --fg:#1c1830; --muted:#5a5570; --card:#fff; --border:#e6e0f2; --accent:#7c3aed; --accent2:#22d3ee; }
+    @media (prefers-color-scheme: dark){ :root{ --bg:#131022; --fg:#ede9fb; --muted:#a89fc4; --card:#1c1836; --border:#2c2650; } }
+    * { box-sizing: border-box; }
+    body { margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--fg); }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+    .kicker { font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 .5rem; }
+    h1 { font-size: clamp(1.8rem,5vw,2.6rem); line-height:1.1; margin:0 0 .6rem; }
+    .grad { background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .lead { font-size:1.1rem; color:var(--muted); margin:0 0 1.5rem; }
+    .cta { display:flex; flex-wrap:wrap; gap:.6rem; margin:0 0 2rem; }
+    a.btn { text-decoration:none; padding:.6rem 1rem; border-radius:.6rem; border:1px solid var(--border); color:var(--fg); background:var(--card); font-weight:600; }
+    a.btn.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+    h2 { font-size:1.25rem; margin:2rem 0 .6rem; }
+    ul { padding-left:1.2rem; }
+    li { margin:.3rem 0; }
+    .note { background:var(--card); border:1px solid var(--border); border-radius:.7rem; padding:1rem 1.1rem; margin:1.5rem 0; }
+    code { background:var(--card); border:1px solid var(--border); border-radius:.35rem; padding:.05rem .35rem; font-size:.9em; }
+    a { color:var(--accent); }
+    footer { margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); color:var(--muted); font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="kicker">About this project</p>
+    <h1>oriz <span class="grad">Persona</span></h1>
+    <p class="lead">AI character chat — build personas, roleplay, save them, and share any character via a single URL.</p>
+
+    <div class="cta">
+      <a class="btn primary" href="https://persona.oriz.in">Open the live app &rarr;</a>
+      <a class="btn" href="https://github.com/chirag127/oriz-persona">Source on GitHub</a>
+      <a class="btn" href="https://persona.oriz.in/llms.txt">llms.txt</a>
+    </div>
+
+    <div class="note">
+      This is the <strong>project info page</strong>, not the tool. The live app runs at
+      <a href="https://persona.oriz.in">persona.oriz.in</a>.
+    </div>
+
+    <h2>What it is</h2>
+    <p>Design an AI character — name, personality traits, voice/tone, opening greeting, and the scene it lives in — then roleplay with it in a streaming speech-bubble chat. Every character is a holographic trading card. Save your whole cast in the browser, or share a single character with a link that carries the character itself.</p>
+
+    <h2>Key features</h2>
+    <ul>
+      <li><strong>Persona builder</strong> — name, tagline, traits, voice, opening line, scene, card colour.</li>
+      <li><strong>Streaming roleplay chat</strong> — in-character replies; stop/restart mid-reply.</li>
+      <li><strong>Trading-card gallery</strong> — holographic cards, starter characters included.</li>
+      <li><strong>Save locally</strong> — IndexedDB; export/import your cast as JSON.</li>
+      <li><strong>Share by URL</strong> — the persona is compressed into the link (lz-string); nothing is stored server-side.</li>
+      <li><strong>Graceful AI degradation</strong> — characters and chats stay intact if providers are down.</li>
+    </ul>
+
+    <h2>Tech</h2>
+    <ul>
+      <li>Client-only <strong>Astro</strong> static site (React 19 islands, Tailwind v4).</li>
+      <li>AI via <strong>g4f</strong> through <code>@chirag127/oz-ai</code> — multi-provider failover, no API key.</li>
+      <li><strong>PWA-installable</strong>, offline-capable.</li>
+      <li><strong>100% in-browser</strong> — no upload, no signup, no server.</li>
+    </ul>
+
+    <footer>
+      <p>MIT (c) 2026 Chirag Singhal - persona.oriz.in - github.com/chirag127/oriz-persona</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+# oriz Persona — full text
+
+> AI character chat. Build an AI persona, roleplay with it, save your cast locally, and share any character by a single URL. 100% client-side, free, no signup, no upload.
+
+Live app: https://persona.oriz.in
+Source: https://github.com/chirag127/oriz-persona
+License: MIT
+
+## What it is
+
+oriz Persona is a browser-based AI character chat studio. You design a character — its name, personality traits, voice/tone, opening greeting, and the scene it lives in — then roleplay with it in a streaming speech-bubble chat. Every character is rendered as a holographic trading card. You can save your whole cast in your browser, export/import it as JSON, and share any single character with one link that carries the character itself (no server involved).
+
+## Hero
+
+AI character chat — give your imagination a voice.
+
+Build an AI character with a name, personality, voice and opening scene, then roleplay in a streaming speech-bubble chat. Save your cast locally and share a character by link. Free, no signup, no upload — everything runs in your browser.
+
+## How it works
+
+1. Create a character — give them traits, a voice, an opening line and a scene.
+2. Chat — the character replies in-role via @chirag127/oz-ai (g4f, multi-provider failover, no key).
+3. Save to your browser (IndexedDB) — export/import as JSON anytime.
+4. Share — the whole character is packed into the link with LZ-string. Nothing leaves your device otherwise.
+
+## Features
+
+- Persona builder: name, tagline, personality traits, voice/tone, opening greeting, scene/scenario, and card accent colour.
+- Roleplay chat: streaming, in-character replies via @chirag127/oz-ai (wraps g4f/gpt4free with multi-provider failover, no API key). Stop or restart the reply mid-chat.
+- Trading-card gallery: every character is a holographic card. Starter characters are included on first load.
+- Save locally: characters persist in the browser via IndexedDB (idb-keyval). Export/import your whole cast as JSON.
+- Share by URL: the persona is compressed into the link with lz-string; open it anywhere to chat.
+- Graceful AI degradation: if every provider is down, your characters and saved chats stay intact.
+
+## Starter characters
+
+- Orin the Sky-Whale — ancient cloud-dwelling whale who speaks in gentle riddles. Wise, serene, curious, kind. Calm & wise voice. Floats above an endless sea of golden clouds at dawn.
+- Vera Sable — razor-sharp noir detective who misses nothing. Observant, sardonic, relentless, guarded. Witty & sarcastic voice. A dim office above a jazz bar, 1947.
+- PIP-3000 — over-enthusiastic little repair robot who LOVES helping. Cheerful, literal, loyal, anxious. Chaotic & playful voice. A cluttered spaceship workshop full of half-built gadgets.
+
+## Tech
+
+- Astro (static build), React 19 islands, Tailwind v4.
+- Shared @chirag127/oz-* packages (oz-ai, oz-chrome, oz-file, oz-tokens-base).
+- AI via @chirag127/oz-ai wrapping g4f/gpt4free — multi-provider failover, no API key. The AI library is dynamically imported only when you send the first message, so first paint is instant.
+- Storage via idb-keyval (IndexedDB); share links via lz-string compression.
+- PWA-installable (offline-capable). SEO + sitemap included.
+
+## Privacy
+
+No backend. No analytics. No cookies. AI requests go directly from your browser to g4f providers; everything else — characters and conversations — is local-only and never uploaded. Share links carry the character itself (compressed into the URL), so nothing is stored anywhere.
+
+## FAQ
+
+- Do I need an account? No. There is no signup and no login.
+- Does it cost anything? No. It is free and there is no paid tier.
+- Where are my characters stored? In your browser's IndexedDB, on your device only.
+- What AI does it use? g4f/gpt4free via @chirag127/oz-ai, with multi-provider failover and no API key.
+- How does sharing work? The full character is compressed into the share URL with lz-string — opening the link recreates the character locally. Nothing is uploaded.
+- What happens if the AI providers are down? Replies may fail, but your characters and saved chats remain intact.

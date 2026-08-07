@@ -1,0 +1,23 @@
+# oriz Persona
+
+> AI character chat. Build an AI persona — name, personality, voice, opening line, scene — then roleplay with it in a streaming speech-bubble chat. Save your cast locally, share any character by a single URL. 100% client-side, free, no signup, no upload.
+
+Live app: https://persona.oriz.in
+Source: https://github.com/chirag127/oriz-persona
+Full LLM text: https://persona.oriz.in/llms-full.txt
+
+## Pages
+
+- [Home / Persona Studio](https://persona.oriz.in): the single-page app — persona builder, trading-card gallery, and roleplay chat all in one.
+
+## Features
+
+- [Persona builder](https://persona.oriz.in): set name, tagline, personality traits, voice/tone, opening greeting, scene/scenario, and card accent colour.
+- [Roleplay chat](https://persona.oriz.in): streaming in-character replies via @chirag127/oz-ai (wraps g4f/gpt4free, multi-provider failover, no API key). Stop/restart mid-chat.
+- [Trading-card gallery](https://persona.oriz.in): every character is a holographic card; three starter characters included.
+- [Save locally](https://persona.oriz.in): characters persist in the browser via IndexedDB (idb-keyval); export/import the whole cast as JSON.
+- [Share by URL](https://persona.oriz.in): the persona is compressed into the link with lz-string; open it anywhere to chat — nothing is stored server-side.
+
+## Privacy
+
+- No backend, no analytics, no cookies. AI requests go browser-direct to g4f providers; characters and chats are local-only and never uploaded.
