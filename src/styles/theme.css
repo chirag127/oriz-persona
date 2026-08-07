@@ -1,0 +1,185 @@
+/*
+ * theme.css — oriz-persona bespoke identity: "Playful Trading-Card".
+ * Vivid duotone (magenta↔cyan), rounded friendly type, card frames, speech
+ * bubbles, bouncy micro-motion. Overrides the shared --oz-* contract AFTER
+ * oz-tokens-base. Shared contract, unique look.
+ */
+@import '@fontsource-variable/fredoka';
+@import '@fontsource-variable/nunito';
+
+:root {
+  color-scheme: light dark;
+
+  /* --- fonts (rounded friendly) --- */
+  --oz-font-display: 'Fredoka Variable', 'Fredoka', system-ui, sans-serif;
+  --oz-font-body: 'Nunito Variable', 'Nunito', system-ui, sans-serif;
+  --oz-font-mono: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* --- bespoke palette: vivid duotone --- */
+  --p-magenta: #ff2d93;
+  --p-magenta-deep: #d1006b;
+  --p-cyan: #22d3ee;
+  --p-cyan-deep: #0891b2;
+  --p-violet: #7c3aed;
+  --p-amber: #ffb703;
+  --p-cream: #fff7fb;
+  --p-ink: #241033;
+
+  /* --- shared contract roles (OVERRIDE) --- */
+  --oz-bg: var(--p-cream);
+  --oz-fg: var(--p-ink);
+  --oz-surface: #ffffff;
+  --oz-muted: #7a5c86;
+  --oz-border: #f3c8e3;
+  --oz-accent: var(--p-magenta);
+  --oz-accent-fg: #ffffff;
+
+  /* --- oz-chrome-specific tokens --- */
+  --oz-paper: #ffffff;
+  --oz-ink: var(--p-ink);
+  --oz-ink-mute: #7a5c86;
+  --oz-rule: #f3c8e3;
+  --oz-header-h: 3.75rem;
+  --oz-text-lg: 1.35rem;
+  --oz-text-md: 1rem;
+  --oz-z-overlay: 1000;
+
+  /* --- signature gradients --- */
+  --p-duo: linear-gradient(135deg, var(--p-magenta), var(--p-cyan));
+  --p-duo-soft: linear-gradient(135deg, #ffe0f1, #d6f7fd);
+
+  /* bouncy easing */
+  --p-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --p-cream: #16091f;
+    --p-ink: #f7ecff;
+    --oz-bg: #16091f;
+    --oz-fg: #f7ecff;
+    --oz-surface: #241033;
+    --oz-muted: #b79bc9;
+    --oz-border: #3d2152;
+    --oz-accent: #ff5aa8;
+    --oz-accent-fg: #16091f;
+    --oz-paper: #1d0d29;
+    --oz-ink: #f7ecff;
+    --oz-ink-mute: #b79bc9;
+    --oz-rule: #3d2152;
+    --p-duo-soft: linear-gradient(135deg, #2b1240, #10303a);
+  }
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 12% -8%, color-mix(in oklab, var(--p-magenta) 22%, transparent), transparent 60%),
+    radial-gradient(1000px 620px at 92% 4%, color-mix(in oklab, var(--p-cyan) 20%, transparent), transparent 55%),
+    var(--oz-bg);
+  background-attachment: fixed;
+}
+
+/* Signature: trading-card frame with holographic sheen */
+.pcard {
+  position: relative;
+  border-radius: 1.25rem;
+  padding: 3px;
+  background: var(--p-duo);
+  box-shadow: 0 12px 30px -12px color-mix(in oklab, var(--p-magenta) 45%, transparent);
+  transition: transform var(--oz-dur-base) var(--p-bounce), box-shadow var(--oz-dur-base) ease;
+}
+.pcard:hover {
+  transform: translateY(-4px) rotate(-0.6deg);
+  box-shadow: 0 20px 44px -14px color-mix(in oklab, var(--p-magenta) 55%, transparent);
+}
+.pcard__inner {
+  border-radius: 1.05rem;
+  background: var(--oz-surface);
+  height: 100%;
+}
+
+/* Speech bubbles */
+.bubble {
+  position: relative;
+  border-radius: 1.1rem;
+  padding: 0.7rem 0.95rem;
+  max-width: min(46ch, 82%);
+  line-height: 1.5;
+  animation: pop var(--oz-dur-base) var(--p-bounce);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.bubble--me {
+  background: var(--p-duo);
+  color: #fff;
+  border-bottom-right-radius: 0.25rem;
+  align-self: flex-end;
+}
+.bubble--them {
+  background: color-mix(in oklab, var(--oz-surface) 92%, var(--p-cyan) 8%);
+  color: var(--oz-fg);
+  border: 1px solid var(--oz-border);
+  border-bottom-left-radius: 0.25rem;
+  align-self: flex-start;
+}
+
+@keyframes pop {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* typing dots */
+.dots span {
+  display: inline-block;
+  width: 0.5rem; height: 0.5rem;
+  margin: 0 1px;
+  border-radius: 50%;
+  background: var(--oz-muted);
+  animation: blink 1.2s infinite ease-in-out both;
+}
+.dots span:nth-child(2) { animation-delay: 0.18s; }
+.dots span:nth-child(3) { animation-delay: 0.36s; }
+@keyframes blink { 0%,80%,100% { opacity: 0.25; transform: scale(0.8);} 40% { opacity: 1; transform: scale(1);} }
+
+.pbtn {
+  font-family: var(--oz-font-display);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--oz-radius-full);
+  transition: transform var(--oz-dur-fast) var(--p-bounce), filter var(--oz-dur-fast) ease;
+}
+.pbtn:hover { transform: translateY(-1px) scale(1.02); }
+.pbtn:active { transform: scale(0.97); }
+.pbtn--primary { background: var(--p-duo); color: #fff; }
+.pbtn--ghost { background: transparent; color: var(--oz-fg); border: 2px solid var(--oz-border); }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--oz-radius-full);
+  background: var(--p-duo-soft);
+  color: var(--oz-fg);
+  font-size: 0.8rem; font-weight: 700;
+}
+
+.field {
+  width: 100%;
+  background: var(--oz-bg);
+  color: var(--oz-fg);
+  border: 2px solid var(--oz-border);
+  border-radius: var(--oz-radius-l);
+  padding: 0.6rem 0.8rem;
+  font: inherit;
+  transition: border-color var(--oz-dur-fast) ease;
+}
+.field:focus-visible { outline: none; border-color: var(--oz-accent); }
+
+.avatar {
+  display: grid; place-items: center;
+  font-family: var(--oz-font-display);
+  font-weight: 700;
+  color: #fff;
+  border-radius: 50%;
+  user-select: none;
+}

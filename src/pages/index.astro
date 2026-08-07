@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PersonaStudio from '../components/PersonaStudio.tsx';
+---
+
+<Layout>
+  <section class="hero">
+    <h1 class="hero__title">Give your imagination <span class="hero__grad">a voice.</span></h1>
+    <p class="hero__sub">
+      Build an AI character — name, personality, voice, opening scene — then roleplay in a bouncy
+      speech-bubble chat. Save your cast, or share a character with one link. No account, no upload:
+      everything runs in your browser.
+    </p>
+    <div class="hero__badges">
+      <span class="chip">🎭 Persona builder</span>
+      <span class="chip">💬 Streaming roleplay</span>
+      <span class="chip">💾 Saved locally</span>
+      <span class="chip">🔗 Share by URL</span>
+    </div>
+  </section>
+
+  <PersonaStudio client:load />
+
+  <section class="how">
+    <h2 class="h">How it works</h2>
+    <ol class="how__list">
+      <li><b>Create</b> a character — give them traits, a voice, an opening line and a scene.</li>
+      <li><b>Chat</b> — the character replies in-role via <code>@chirag127/oz-ai</code> (g4f, multi-provider failover, no key).</li>
+      <li><b>Save</b> to your browser (IndexedDB) — export/import as JSON anytime.</li>
+      <li><b>Share</b> — the whole character is packed into the link with LZ-string. Nothing leaves your device otherwise.</li>
+    </ol>
+  </section>
+</Layout>
+
+<style>
+  .hero { text-align: center; padding: 1.5rem 0 2rem; }
+  .hero__title { font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.05; margin: 0 0 .8rem; }
+  .hero__grad {
+    background: var(--p-duo); -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .hero__sub { max-width: 60ch; margin: 0 auto 1.2rem; color: var(--oz-muted); font-size: 1.05rem; }
+  .hero__badges { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; }
+  .how { margin-top: 3rem; padding-top: 2rem; border-top: 2px dashed var(--oz-border); }
+  .how__list { max-width: 62ch; line-height: 1.8; padding-left: 1.2rem; }
+  code { background: var(--oz-surface); padding: .1rem .4rem; border-radius: var(--oz-radius-s); border: 1px solid var(--oz-border); }
+</style>

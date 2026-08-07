@@ -1,0 +1,55 @@
+---
+import '@chirag127/oz-tokens-base';
+import '@chirag127/oz-chrome/styles.css';
+import '../styles/theme.css';
+import '../styles/studio.css';
+import OzHeader from '@chirag127/oz-chrome/components/OzHeader.astro';
+import OzFooter from '@chirag127/oz-chrome/components/OzFooter.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'oriz.persona — AI character chat',
+  description = 'Create AI characters with a name, traits & voice, roleplay in speech-bubble chat, save them in your browser, and share via a link. 100% client-side.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ff2d93" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://persona.oriz.in/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="oz-skip-link" href="#main">Skip to content</a>
+    <OzHeader site="persona" title="AI character chat">
+      <a href="https://oriz.in" class="pbtn pbtn--ghost" style="padding:.35rem .8rem">oriz.in</a>
+    </OzHeader>
+    <main id="main" tabindex="-1" class="wrap">
+      <slot />
+    </main>
+    <OzFooter>
+      <a href="https://github.com/chirag127/oriz-persona">Source</a>
+      <span aria-hidden="true"> · </span>
+      <span>100% client-side · no signup</span>
+    </OzFooter>
+
+    <style is:global>
+      .wrap { max-width: 980px; margin: 0 auto; padding: 1.5rem 1.1rem 4rem; }
+      .oz-footer { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+        padding: 1.2rem 1.1rem; border-top: 1px solid var(--oz-rule);
+        max-width: 980px; margin: 0 auto; color: var(--oz-ink-mute); font-size: .85rem; }
+      .oz-footer__links { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
+    </style>
+  </body>
+</html>

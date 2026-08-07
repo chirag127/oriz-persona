@@ -1,0 +1,62 @@
+/* PersonaStudio component styles — playful trading-card layout. */
+.studio { position: relative; }
+
+.toast {
+  position: fixed; left: 50%; bottom: 1.5rem; transform: translateX(-50%);
+  background: var(--p-ink); color: #fff;
+  padding: 0.6rem 1.1rem; border-radius: var(--oz-radius-full);
+  box-shadow: 0 10px 30px -8px rgba(0,0,0,.4); z-index: 50;
+  font-weight: 700; animation: pop var(--oz-dur-base) var(--p-bounce);
+}
+
+.bar { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.1rem; }
+.bar__actions { display: flex; gap: .5rem; margin-left: auto; flex-wrap: wrap; }
+.h { font-size: 1.5rem; margin: 0; }
+.muted { color: var(--oz-muted); }
+.err { color: var(--p-magenta-deep); font-weight: 700; margin: .6rem 0 0; }
+
+.grid { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+
+.ccard { display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+.ccard__top { display: grid; place-items: center; padding: 1.4rem; position: relative; }
+.ccard__top::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,.35) 50%, transparent 60%);
+  mix-blend-mode: overlay;
+}
+.ccard__body { padding: .9rem 1rem .4rem; flex: 1; }
+.ccard__name { font-size: 1.15rem; margin: 0 0 .15rem; }
+.ccard__tag { color: var(--oz-muted); font-size: .9rem; margin: 0 0 .6rem; min-height: 1.2em; }
+.ccard__traits { display: flex; flex-wrap: wrap; gap: .35rem; }
+.ccard__foot { display: flex; gap: .4rem; padding: .8rem 1rem 1rem; }
+
+.editor__grid { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+.lbl { display: flex; flex-direction: column; gap: .35rem; font-weight: 700; font-size: .9rem; }
+.lbl--full { grid-column: 1 / -1; }
+.traitrow { display: flex; gap: .5rem; }
+.traitrow .field { flex: 1; }
+.swatches { display: flex; gap: .5rem; }
+.swatch { width: 2rem; height: 2rem; border-radius: 50%; border: 3px solid transparent; cursor: pointer; }
+.swatch--on { border-color: var(--oz-fg); transform: scale(1.12); }
+.editor__foot { margin-top: 1.2rem; display: flex; justify-content: flex-end; }
+textarea.field { resize: vertical; }
+
+.chat { display: flex; flex-direction: column; gap: .8rem; height: min(72vh, 640px); }
+.chat__head { flex: none; }
+.chat__headinner { display: flex; align-items: center; gap: .7rem; padding: .55rem .8rem; }
+.chat__who { display: flex; flex-direction: column; line-height: 1.2; }
+.chat__who .muted { font-size: .8rem; }
+.chat__headbtns { margin-left: auto; display: flex; gap: .4rem; }
+.chat__log {
+  flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: .6rem;
+  padding: 1rem; background: var(--oz-surface); border: 2px solid var(--oz-border);
+  border-radius: var(--oz-radius-l);
+}
+.chat__input { display: flex; gap: .5rem; align-items: flex-end; }
+.chat__input .field { flex: 1; max-height: 8rem; }
+
+@media (max-width: 560px) {
+  .editor__grid { grid-template-columns: 1fr; }
+  .h { font-size: 1.25rem; }
+  .bar__actions { margin-left: 0; width: 100%; }
+}
